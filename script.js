@@ -3,7 +3,10 @@ document.addEventListener('DOMContentLoaded', () => {
   if (year) year.textContent = new Date().getFullYear();
 
   const revealItems = document.querySelectorAll('.reveal');
-  if (!('IntersectionObserver' in window)) return;
+  if (!('IntersectionObserver' in window)) {
+    revealItems.forEach((item) => item.classList.add('is-visible'));
+    return;
+  }
 
   const revealObserver = new IntersectionObserver((entries, observer) => {
     entries.forEach((entry) => {
